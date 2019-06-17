@@ -1,0 +1,18 @@
+@media only screen and (max-width : 480px) {
+
+  .home-page-content {
+    width: inherit;
+    height: inherit;
+  }
+
+  .home-page-list {
+    width: inherit;
+    height: inherit;
+  }
+
+}
+
+
+@media only screen and (max-width : 360px) {
+
+}

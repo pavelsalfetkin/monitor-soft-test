@@ -1,0 +1,45 @@
+/* ---------------------------------------------------------------------------- */
+/* --------------------------------- HEADER ----------------------------------- */
+/* ---------------------------------------------------------------------------- */
+
+
+/* --------------------------------- left side -------------------------------- */
+
+
+.menu {
+	display: flex;
+  position: absolute;
+  flex-direction: column;
+	justify-content: center;
+	align-items: center;
+  width: inherit;
+  height: 100%;
+  background-color: rgba(37, 38, 40, 0.95);
+	z-index: 10;
+}
+
+.menu-menu-home,
+.menu-menu-login,
+.menu-menu-register {
+	font-weight: 700;
+	font-size: 48px;
+	letter-spacing: 0.4pt;
+	line-height: 48px;
+  color: var(--day-light-color);
+  margin-bottom: 48px;
+	text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+	transition-duration: 0.2s;
+}
+
+.menu-menu-register {
+	margin-bottom: 0px;
+}
+
+.header-menu-home:hover,
+.header-menu-login:hover,
+.header-menu-register:hover {
+	color: var(--day-medium-text-color);
+	transition-duration: 0.2s;
+}

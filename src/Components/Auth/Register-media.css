@@ -1,0 +1,34 @@
+@media only screen and (max-width : 480px) {
+
+  .register-page.show {
+    padding-top: 32px;
+    padding-bottom: 0px;
+  }
+  
+  .register-page-content {
+    width: inherit;
+    height: inherit;
+  }
+
+  .form.show {
+    width: inherit;
+    height: inherit;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 0px;
+    margin-bottom: 24px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .form-label-email,
+  .form-label-password,
+  .form-input-email,
+  .form-input-password,
+  .form-label-login {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  
+}
