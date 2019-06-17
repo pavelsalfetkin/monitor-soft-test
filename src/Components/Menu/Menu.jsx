@@ -28,16 +28,16 @@ class Menu extends React.Component {
         {
           isHomePage === "logout" &&
           <>
-            <Link className="menu-menu-home" to="/" onClick={isMenuSwitcher}>Home</Link>
-            <Link className="menu-menu-login" to="/login" onClick={isMenuSwitcher}>Login</Link>
-            <Link className="menu-menu-register" to="/register" onClick={isMenuSwitcher}>Register</Link>
+            <Link className="menu-menu-home" to="/monitor-soft-test" onClick={isMenuSwitcher}>Home</Link>
+            <Link className="menu-menu-login" to="/monitor-soft-test/login" onClick={isMenuSwitcher}>Login</Link>
+            <Link className="menu-menu-register" to="/monitor-soft-test/register" onClick={isMenuSwitcher}>Register</Link>
           </>
         }
         {
           isHomePage === "login" || isHomePage === "createUser" || isHomePage === "addUser" || isHomePage === "newUser" ?
           <>
-            <Link className="menu-menu-home" to="/" onClick={this.loginSwitcher}>Home</Link>
-            <Link className="menu-menu-login" to="/" onClick={this.logoutSwitcher}>Logout</Link>
+            <Link className="menu-menu-home" to="/monitor-soft-test" onClick={this.loginSwitcher}>Home</Link>
+            <Link className="menu-menu-login" to="/monitor-soft-test" onClick={this.logoutSwitcher}>Logout</Link>
           </> : null
         }
       </div>
