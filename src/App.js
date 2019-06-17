@@ -202,7 +202,7 @@ class App extends React.Component {
           <Main>
             {
               isDataShown ?
-              <Route path='/' exact render={(props) => (
+              <Route path='/' render={(props) => (
                 <Home {...props}
                   isHomePage={isHomePage}
                   usersList={usersList}
