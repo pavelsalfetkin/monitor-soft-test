@@ -202,7 +202,7 @@ class App extends React.Component {
           <Main>
             {
               isDataShown ?
-              <Route path='/' render={(props) => (
+              <Route path='/monitor-soft-test' render={(props) => (
                 <Home {...props}
                   isHomePage={isHomePage}
                   usersList={usersList}
@@ -225,13 +225,13 @@ class App extends React.Component {
               logout={this.logout}
               isMenuSwitcher={this.isMenuSwitcher}/>
             }
-            <Route path='/login' render={(props) => (
+            <Route path='/monitor-soft-test/login' render={(props) => (
                 <Login {...props}
                   isHomePageSwitcher={this.isHomePageSwitcher}
                   login={this.login}>
                 </Login>
               )}/>
-            <Route path="/register" render={(props) => (
+            <Route path="/monitor-soft-test/register" render={(props) => (
               <Register {...props}
                 isHomePageSwitcher={this.isHomePageSwitcher}
                 register={this.register}>
