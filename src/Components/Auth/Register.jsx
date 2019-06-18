@@ -45,7 +45,7 @@ class Register extends Component {
       console.log(res);
 
       if (res.status === 200) {
-        this.props.history.push('/monitor-soft-test');
+        this.props.history.push('/monitor-soft-test/home');
         isHomePageSwitcher("login");
         register("register");
       } else {
