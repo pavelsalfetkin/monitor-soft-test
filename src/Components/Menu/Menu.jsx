@@ -5,6 +5,24 @@ import { Link } from 'react-router-dom';
 
 class Menu extends React.Component {
 
+  /**
+  |--------------------------------------------------
+    Menu - компонент содержащий в себе ссылки: Home, Login, Register
+    отображающиеся в зависимости от глобального состояния isHomePage
+    и меняющий это состояние через isMenuSwitcher()
+    изменения происходят в App.js
+    Компонент отображается в мобильной версии
+  |--------------------------------------------------
+  */
+
+  /**
+  |--------------------------------------------------
+    logoutSwitcher, loginSwitcher - меняют глобальное состояние в App.js,
+    в зависимости от того, залогинился пользователь или нет,
+    isMenuSwitcher() - меняет состояние true/false для отображения или нет
+  |--------------------------------------------------
+  */
+
   logoutSwitcher = () => {
     const { logout } = this.props;
     const isHomePageSwitcher = this.props.isHomePageSwitcher;
@@ -28,16 +46,16 @@ class Menu extends React.Component {
         {
           isHomePage === "logout" &&
           <>
-            <Link className="menu-menu-home" to="/monitor-soft-test/home" onClick={isMenuSwitcher}>Home</Link>
-            <Link className="menu-menu-login" to="/monitor-soft-test/login" onClick={isMenuSwitcher}>Login</Link>
-            <Link className="menu-menu-register" to="/monitor-soft-test/register" onClick={isMenuSwitcher}>Register</Link>
+            <Link className="menu-menu-home" to="/" onClick={isMenuSwitcher}>Home</Link>
+            <Link className="menu-menu-login" to="/login" onClick={isMenuSwitcher}>Login</Link>
+            <Link className="menu-menu-register" to="/register" onClick={isMenuSwitcher}>Register</Link>
           </>
         }
         {
           isHomePage === "login" || isHomePage === "createUser" || isHomePage === "addUser" || isHomePage === "newUser" ?
           <>
-            <Link className="menu-menu-home" to="/monitor-soft-test/home" onClick={this.loginSwitcher}>Home</Link>
-            <Link className="menu-menu-login" to="/monitor-soft-test/home" onClick={this.logoutSwitcher}>Logout</Link>
+            <Link className="menu-menu-home" to="/" onClick={this.loginSwitcher}>Home</Link>
+            <Link className="menu-menu-login" to="/" onClick={this.logoutSwitcher}>Logout</Link>
           </> : null
         }
       </div>

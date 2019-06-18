@@ -6,6 +6,13 @@ import cn from 'classnames';
 
 
 class Register extends Component {
+
+  /**
+  |--------------------------------------------------
+  | isShow - состояние для анимаци плавного появления окна для css-стилей
+  |--------------------------------------------------
+  */
+
   constructor(props) {
     super(props)
     this.state = {
@@ -23,12 +30,27 @@ class Register extends Component {
     this.setState({ isShow: false });
   }
 
+  /**
+  |--------------------------------------------------
+  | handleInputChange - во время ввода информации в окне формы, информация сразу помещяется в соответствующее состояние
+  |--------------------------------------------------
+  */
+
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
       [name]: value
     });
   }
+
+  /**
+  |--------------------------------------------------
+    onSubmit - когда необходимые данные введены в форму, отправляем их на сервер,
+    если получен положительный ответ от сервера, то функция isHomePageSwitcher()
+    меняет глобальное состояние в App.js для отображения нужного компонента.
+    Функция login() отправляет статус для уведомления
+  |--------------------------------------------------
+  */
   
   onSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +67,7 @@ class Register extends Component {
       console.log(res);
 
       if (res.status === 200) {
-        this.props.history.push('/monitor-soft-test/home');
+        this.props.history.push('/');
         isHomePageSwitcher("login");
         register("register");
       } else {

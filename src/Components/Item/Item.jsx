@@ -3,7 +3,19 @@ import './Item.css';
 import './Item-media.css';
 import cn from 'classnames';
 
+
 class Item extends Component {
+
+  /**
+  |--------------------------------------------------
+    Item - отображает одного юзера из большого списка юзеров пришедших с сервера  
+    isShown - состояние отвечающее за отображение компонента и для css анимации
+    isActive - отображает кнопку редактирования компонента
+    isEditing - активирует режим редактирования компонента
+    avatar, first_name, last_name, email, id - необходимые данные для отображения информации о пользователе
+  |--------------------------------------------------
+  */
+
   static defaultProps = {
     avatar: "null",
     first_name: "null",
@@ -26,6 +38,12 @@ class Item extends Component {
     };
   }
 
+  /**
+  |--------------------------------------------------
+  | handleInputChange - во время ввода информации в окне формы, информация сразу помещяется в соответствующее состояние
+  |--------------------------------------------------
+  */
+
   handleChange = (e) => {
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -36,6 +54,12 @@ class Item extends Component {
     });
   };
 
+  /**
+  |--------------------------------------------------
+  | activateItem - активирует режим редактирования данных пользователя
+  |--------------------------------------------------
+  */
+
   activateItem = (e) => {
     e.preventDefault();
     const isActive = this.state.isActive;
@@ -43,6 +67,13 @@ class Item extends Component {
     this.setState({ isActive: !isActive });
     isEditing && this.setState({ isEditing: !isEditing });
   }
+
+  /**
+  |--------------------------------------------------
+    editItem - активирует режим изменения данных пользователя
+    и отправляет новые данные в App.js через updateUser()
+  |--------------------------------------------------
+  */
 
   editItem = () => {
     const id = this.state.id;
@@ -55,6 +86,13 @@ class Item extends Component {
     updateUser(id, first_name, last_name, email);
   }
 
+  /**
+  |--------------------------------------------------
+    deleteItem - удаляет пользователя, отправив в App.js необходимый для этого id
+    через deleteUser()
+  |--------------------------------------------------
+  */
+
   deleteItem = () => {
     const id = this.state.id;
     const deleteUser = this.props.deleteUser;
@@ -62,6 +100,13 @@ class Item extends Component {
     this.setState({ isShown: !isShown });
     deleteUser(id);
   }
+
+  /**
+  |--------------------------------------------------
+    saveNewUser - сохраняет пользователя, отправив в App.js необходимый для этого данные
+    через saveNewUser()
+  |--------------------------------------------------
+  */
 
   saveNewUser = () => {
     const saveNewUser = this.props.saveNewUser;
@@ -72,7 +117,7 @@ class Item extends Component {
     const lastName = this.state.last_name;
     const email = this.state.email;
     saveNewUser(firstName, lastName, email);
-    console.log("Item.js - saveNewUser");
+    // console.log("Item.js - saveNewUser");
     // console.log("firstName:", firstName);
     // console.log("lastName:", lastName);
     // console.log("email:", email);

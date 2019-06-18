@@ -6,6 +6,16 @@ import Item from '../Item/Item';
 
 
 class Home extends Component {
+
+  /**
+  |--------------------------------------------------
+    Компонент в котором отображаются основные данные.
+    Состояния компонента:
+    isShow - состояние для анимаци плавного появления окна для css-стилей
+    first_name, last_name, email - сюда помещаются необходимые данные при создании нового пользователя
+  |--------------------------------------------------
+  */
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,13 +34,28 @@ class Home extends Component {
     this.setState({ isShow: false });
   }
 
+  /**
+  |--------------------------------------------------
+    homePageStatusSwitcher - принимает данные из атрибута data-home-page-status
+    и отправляет их в App.js для изменения глобального состояния,
+    после этого отображаются необхдимые элементы в компоненте
+  |--------------------------------------------------
+  */
+
   homePageStatusSwitcher = (e) => {
     e.preventDefault();
-    console.log(e.target.dataset.homePageStatus);
+    // console.log(e.target.dataset.homePageStatus);
     const isHomePageSwitcher = this.props.isHomePageSwitcher;
     const status = e.target.dataset.homePageStatus
     isHomePageSwitcher(status);
   }
+
+  /**
+  |--------------------------------------------------
+    saveNewUser - сохраняет данные нового пользователя в локальное состояние
+    и меняет глобальный статус в isHomePageSwitcher()
+  |--------------------------------------------------
+  */
 
   saveNewUser = (firstName, lastName, email) => {
     const isHomePageSwitcher = this.props.isHomePageSwitcher;
@@ -40,8 +65,16 @@ class Home extends Component {
       email: email,
     });
     isHomePageSwitcher("addUser");
-    console.log("Home.js - saveNewUser");
+    // console.log("Home.js - saveNewUser");
   }
+
+  /**
+  |--------------------------------------------------
+    addUser - берет данные о новом пользователе из локального состояния
+    и отправляет их в App.js через функцию addUser(),
+    меняет глобальный статус в isHomePageSwitcher()
+  |--------------------------------------------------
+  */
 
   addUser = () => {
     const isHomePageSwitcher = this.props.isHomePageSwitcher;
@@ -51,7 +84,7 @@ class Home extends Component {
     const email = this.state.email;
     addUser(firstName, lastName, email);
     isHomePageSwitcher("newUser");
-    console.log("Home.js - addUser");
+    // console.log("Home.js - addUser");
   }
 
   render() {

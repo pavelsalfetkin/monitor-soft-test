@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+/**
+|--------------------------------------------------
+  api.js - модуль связывается с api сервера и передает данные в App.js
+  getUsersList - принимает данные с сервера
+  deleteUser - удаляет данные с сервера
+  updateUser - обновляет данные с сервера
+  addUser - добавляет новые данные на сервер
+|--------------------------------------------------
+*/
+
 const getUsersList = (listPage, usersPerPage = 2) => {
   return axios.get(`https://reqres.in/api/users`, {
     params: {

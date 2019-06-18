@@ -3,6 +3,16 @@ import './Pagination.css';
 
 
 class Pagination extends React.Component {
+
+  /**
+  |--------------------------------------------------
+    Pagination - компонент отображающий визуальную часть пагинации,
+    переключение между страничками данных
+    dotsRender() - формирует визуальное отображение компонента,
+    опираясь на данные пришедшие из App.js 
+  |--------------------------------------------------
+  */
+
   dotsRender = () => {
     const { currentPage, totalPages, paginationSwitchPages } = this.props;
 

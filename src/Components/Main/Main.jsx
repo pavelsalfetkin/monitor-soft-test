@@ -3,6 +3,13 @@ import './Main.css';
 
 
 class Main extends React.Component {
+
+  /**
+  |--------------------------------------------------
+  | Main - родительский компонент-контейнет для отображения в себе компонентов: Home, Login, Register
+  |--------------------------------------------------
+  */
+
   constructor(props) {
     super(props);
     this.state = {

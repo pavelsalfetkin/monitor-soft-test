@@ -14,6 +14,21 @@ import Loader from 'react-loader-spinner';
 
 
 class App extends React.Component {
+
+/**
+|--------------------------------------------------
+  isDataShown - загрузка данных с сервера
+  isHomePage - глобальное состояние для отображения основных компонентов
+  isMenu - отображение меню для мобильной версии
+  usersList - сюда помещается список данных с сервера, для отображения
+  currentPage - страница данных на сервере, которая отобразится на странице
+  usersPerPage - сколько юзеров отображать на странице
+  totalUsers - общее кол-во юзеров на сервере
+  totalPages - общее кол-во страниц на сервере
+  notificationStatus - сюда помещаются уведомления
+|--------------------------------------------------
+*/
+
   constructor(props) {
     super(props);
     this.state = {
@@ -28,6 +43,12 @@ class App extends React.Component {
       notificationStatus: null,
     };
   }
+
+  /**
+  |--------------------------------------------------
+  | при монтировании компонента обращаемся на сервер за данными через API (api.js)
+  |--------------------------------------------------
+  */
 
   componentDidMount = async () => {
     const currentPage = this.state.currentPage;
@@ -47,6 +68,12 @@ class App extends React.Component {
     }, 2000);
   }
 
+  /**
+  |--------------------------------------------------
+  | isHomePageSwitcher - меняет глобальное состояние приложения, в последствии отображается необходимый компонент
+  |--------------------------------------------------
+  */
+
   isHomePageSwitcher = (homePageStatus) => {
     homePageStatus === "logout" && this.setState({ isHomePage: "logout" });
     homePageStatus === "login" && this.setState({ isHomePage: "login" });
@@ -55,42 +82,54 @@ class App extends React.Component {
     homePageStatus === "newUser" && this.setState({ isHomePage: "newUser" });
   }
 
+  /**
+  |--------------------------------------------------
+  | switchStatusText - проверяет статус ответа сервера и генерирует текстовое уведомление
+  |--------------------------------------------------
+  */
+
   switchStatusText(status) {
     switch(status) {
       case 200:
-        console.log("Status - 200");
+        // console.log("Status - 200");
         this.setState({ notificationStatus: "Data updated" });
         break;
       case 201:
-        console.log("Status - 201");
+        // console.log("Status - 201");
         this.setState({ notificationStatus: "New user created" });
         break;
       case 204:
-        console.log("Status - 204");
+        // console.log("Status - 204");
         this.setState({ notificationStatus: "User deleted" });
         break;
       case 400:
-        console.log("Status - 400");
+        // console.log("Status - 400");
         this.setState({ notificationStatus: "status 400" });
         break;
       case "login":
-        console.log("Status - 200");
+        // console.log("Status - 200");
         this.setState({ notificationStatus: "User logged in" });
         break;
       case "logout":
-        console.log("Status - logout");
+        // console.log("Status - logout");
         this.setState({ notificationStatus: "User logged out" });
         break;
       case "register":
-        console.log("Status - register");
+        // console.log("Status - register");
         this.setState({ notificationStatus: "User is registered" });
         break;
       default:
-        console.log("Default status");
+        // console.log("Default status");
         this.setState({ notificationStatus: "Loading data..." });
         break;
     }
   }
+
+  /**
+  |--------------------------------------------------
+  | paginationSwitchPages - осуществляет пагинацию обращаясь к серверу через API (api.js)
+  |--------------------------------------------------
+  */
 
   paginationSwitchPages = async (e) => {
     e.preventDefault();
@@ -144,52 +183,82 @@ class App extends React.Component {
     }
   }
 
+  /**
+  |--------------------------------------------------
+  | deleteUser - удаляет пользователя с сервера, принимает необходимые данные от компонента и передает их на сервер через API
+  |--------------------------------------------------
+  */
+
   deleteUser = async (id) => {
-    console.log("App.js - deleteUser:", id);
+    // console.log("App.js - deleteUser:", id);
     const res = await api.deleteUser(id);
-    console.log("App.js - response:", res);
+    // console.log("App.js - response:", res);
     this.switchStatusText(res.status);
   }
+
+  /**
+  |--------------------------------------------------
+  | updateUser - обновляет данные о пользователе через API
+  |--------------------------------------------------
+  */
 
   updateUser = async (id, firstName, lastName, email) => {
-    console.log("App.js - updateUser:", id);
+    // console.log("App.js - updateUser:", id);
     const res = await api.updateUser(id, firstName, lastName, email);
-    console.log("App.js - response:", res);
+    // console.log("App.js - response:", res);
     this.switchStatusText(res.status);
   }
+
+  /**
+  |--------------------------------------------------
+  | updateUser - добавляет пользователя
+  |--------------------------------------------------
+  */
 
   addUser = async (firstName, lastName, email) => {
-    console.log("App.js - addUser:", firstName, lastName, email);
+    // console.log("App.js - addUser:", firstName, lastName, email);
     const res = await api.addUser(firstName, lastName, email);
-    console.log("App.js - response:", res);
+    // console.log("App.js - response:", res);
     this.switchStatusText(res.status);
   }
 
+  /**
+  |--------------------------------------------------
+  | login, logout, register - меняет состояние для уведомления
+  |--------------------------------------------------
+  */
+
   login = async (status) => {
-    console.log("App.js - login:", status);
+    // console.log("App.js - login:", status);
     this.switchStatusText(status);
   }
 
   logout = async (status) => {
-    console.log("App.js - logout:", status);
+    // console.log("App.js - logout:", status);
     this.switchStatusText(status);
   }
 
   register = async (status) => {
-    console.log("App.js - register:", status);
+    // console.log("App.js - register:", status);
     this.switchStatusText(status);
   }
 
+  /**
+  |--------------------------------------------------
+  | isMenuSwitcher - активирует меню в мобильной версии
+  |--------------------------------------------------
+  */
+
   isMenuSwitcher = () => {
     const isMenu = this.state.isMenu;
-    console.log("App.js - isMenu");
+    // console.log("App.js - isMenu");
     this.setState({ isMenu: !isMenu });
   }
 
   render() {
     const { isDataShown, isHomePage, usersList, currentPage, totalPages, isMenu, notificationStatus } = this.state;
 
-    console.log("App.js - isHomePage status:", isHomePage);
+    // console.log("App.js - isHomePage status:", isHomePage);
 
     return (
       <Router>
@@ -202,7 +271,7 @@ class App extends React.Component {
           <Main>
             {
               isDataShown ?
-              <Route path='/monitor-soft-test/home' render={(props) => (
+              <Route path='/' exact render={(props) => (
                 <Home {...props}
                   isHomePage={isHomePage}
                   usersList={usersList}
@@ -225,13 +294,13 @@ class App extends React.Component {
               logout={this.logout}
               isMenuSwitcher={this.isMenuSwitcher}/>
             }
-            <Route path='/monitor-soft-test/login' render={(props) => (
+            <Route path='/login' render={(props) => (
               <Login {...props}
                 isHomePageSwitcher={this.isHomePageSwitcher}
                 login={this.login}>
               </Login>
             )}/>
-            <Route path="/monitor-soft-test/register" render={(props) => (
+            <Route path="/register" render={(props) => (
               <Register {...props}
                 isHomePageSwitcher={this.isHomePageSwitcher}
                 register={this.register}>

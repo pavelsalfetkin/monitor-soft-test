@@ -6,6 +6,13 @@ import cn from 'classnames';
 
 
 class Login extends Component {
+
+  /**
+  |--------------------------------------------------
+  | isShow - состояние для анимаци плавного появления окна для css-стилей
+  |--------------------------------------------------
+  */
+
   constructor(props) {
     super(props)
     this.state = {
@@ -23,12 +30,27 @@ class Login extends Component {
     this.setState({ isShow: false });
   }
 
+  /**
+  |--------------------------------------------------
+  | handleInputChange - во время ввода информации в окне формы, информация сразу помещяется в соответствующее состояние
+  |--------------------------------------------------
+  */
+
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
       [name]: value
     });
   }
+
+  /**
+  |--------------------------------------------------
+    onSubmit - когда необходимые данные введены в форму, отправляем их на сервер,
+    если получен положительный ответ от сервера, то функция isHomePageSwitcher()
+    меняет глобальное состояние в App.js для отображения нужного компонента.
+    Функция login() отправляет статус для уведомления
+  |--------------------------------------------------
+  */
   
   onSubmit = async (event) => {
     event.preventDefault();
@@ -42,10 +64,10 @@ class Login extends Component {
         "password": password,
       });
 
-      console.log(res);
+      // console.log(res);
 
       if (res.status === 200) {
-        this.props.history.push('/monitor-soft-test/home');
+        this.props.history.push('/');
         isHomePageSwitcher("login");
         login("login");
       } else {
@@ -54,23 +76,17 @@ class Login extends Component {
         throw error;
       }
     } catch(e) {
-      console.log("error");
+      // console.log("error");
     }
   }
 
   render() {
     const isShow = this.state.isShow;
-    console.log(this.props)
+    // console.log(this.props)
 
     const loginPage = cn({
       'login-page': true,
       'show animated fadeInLeft_List': isShow,
-    });
-
-    const loginBlock = cn({
-      'form show': true,
-      // 'show animated fadeInLeft_List': itemData && isShown,
-      // 'active': isEditing,
     });
 
     return (
@@ -78,7 +94,7 @@ class Login extends Component {
         <div className="login-page-content">
           <h2 className="login-page-title">Login</h2>
           <span className="login-page-info">Login to get full access</span>
-          <form className={loginBlock} onSubmit={this.onSubmit}>
+          <form className="form show" onSubmit={this.onSubmit}>
             <label htmlFor="inputEmail4" className="form-label-email">E-mail:</label>
             <input className="form-input-email"
               type="email"

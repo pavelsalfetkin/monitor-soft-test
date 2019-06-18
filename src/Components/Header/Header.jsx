@@ -6,6 +6,22 @@ import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
 
+  /**
+  |--------------------------------------------------
+    Компонент принимает props:
+    notificationStatus - текст уведомления которое отображается в этом компоненте
+    isHomePage - глобальный статус для отображения необходимых пунктов меню
+    isMenuSwitcher - функция для изменения глобального состояния
+  |--------------------------------------------------
+  */
+
+  /**
+  |--------------------------------------------------
+  | logoutSwitcher, loginSwitcher - меняют глобальное состояние в App.js,
+    в зависимости от того, залогинился пользователь или нет
+  |--------------------------------------------------
+  */
+
   logoutSwitcher = () => {
     const { logout } = this.props;
     const isHomePageSwitcher = this.props.isHomePageSwitcher;
@@ -36,16 +52,16 @@ class Header extends React.Component {
           {
             isHomePage === "logout" &&
             <>
-              <Link className="header-menu-home" to="/monitor-soft-test/home">Home</Link>
-              <Link className="header-menu-login" to="/monitor-soft-test/login">Login</Link>
-              <Link className="header-menu-register" to="/monitor-soft-test/register">Register</Link>
+              <Link className="header-menu-home" to="/">Home</Link>
+              <Link className="header-menu-login" to="/login">Login</Link>
+              <Link className="header-menu-register" to="/register">Register</Link>
             </>
           }
           {
             isHomePage === "login" || isHomePage === "createUser" || isHomePage === "addUser" || isHomePage === "newUser" ?
             <>
-              <Link className="header-menu-home" to="/monitor-soft-test/home" onClick={this.loginSwitcher}>Home</Link>
-              <Link className="header-menu-login" to="/monitor-soft-test/home" onClick={this.logoutSwitcher}>Logout</Link>
+              <Link className="header-menu-home" to="/" onClick={this.loginSwitcher}>Home</Link>
+              <Link className="header-menu-login" to="/" onClick={this.logoutSwitcher}>Logout</Link>
             </> : null
           }
         </div>
