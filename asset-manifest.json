@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/monitor-soft-test/static/css/main.3777f7a0.chunk.css",
-    "main.js": "/monitor-soft-test/static/js/main.356c83f0.chunk.js",
-    "main.js.map": "/monitor-soft-test/static/js/main.356c83f0.chunk.js.map",
+    "main.js": "/monitor-soft-test/static/js/main.f7fdd287.chunk.js",
+    "main.js.map": "/monitor-soft-test/static/js/main.f7fdd287.chunk.js.map",
     "runtime~main.js": "/monitor-soft-test/static/js/runtime~main.e35efefb.js",
     "runtime~main.js.map": "/monitor-soft-test/static/js/runtime~main.e35efefb.js.map",
     "static/css/2.5ec480d0.chunk.css": "/monitor-soft-test/static/css/2.5ec480d0.chunk.css",
     "static/js/2.57978956.chunk.js": "/monitor-soft-test/static/js/2.57978956.chunk.js",
     "static/js/2.57978956.chunk.js.map": "/monitor-soft-test/static/js/2.57978956.chunk.js.map",
     "index.html": "/monitor-soft-test/index.html",
-    "precache-manifest.e87b66bebeb64621c96832a67bc63373.js": "/monitor-soft-test/precache-manifest.e87b66bebeb64621c96832a67bc63373.js",
+    "precache-manifest.044a8b98ec79f5d34bebe98b62de3880.js": "/monitor-soft-test/precache-manifest.044a8b98ec79f5d34bebe98b62de3880.js",
     "service-worker.js": "/monitor-soft-test/service-worker.js",
     "static/css/2.5ec480d0.chunk.css.map": "/monitor-soft-test/static/css/2.5ec480d0.chunk.css.map",
     "static/css/main.3777f7a0.chunk.css.map": "/monitor-soft-test/static/css/main.3777f7a0.chunk.css.map"
