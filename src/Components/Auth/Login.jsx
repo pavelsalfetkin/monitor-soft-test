@@ -45,7 +45,7 @@ class Login extends Component {
       console.log(res);
 
       if (res.status === 200) {
-        this.props.history.push('/');
+        this.props.history.push('/monitor-soft-test');
         isHomePageSwitcher("login");
         login("login");
       } else {
