@@ -20,10 +20,10 @@ Password: pistol
 
 ### В проекте используюется:
 
-React.js (Create-react-app)
-axios - для отправки запросов на сервер
-classnames - для удобной работ с CSS-стилями
-gh-pages - для деплоя на GitHubPages (в тестовом режиме)
+React.js (Create-react-app),
+axios - для отправки запросов на сервер,
+classnames - для удобной работ с CSS-стилями,
+gh-pages - для деплоя на GitHubPages (в тестовом режиме),
 react-loader-spinner - для визуализации процесса загрузки
 
 
