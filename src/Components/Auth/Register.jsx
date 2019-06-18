@@ -64,7 +64,7 @@ class Register extends Component {
         "password": password,
       });
 
-      console.log(res);
+      // console.log(res);
 
       if (res.status === 200) {
         this.props.history.push('/');
@@ -82,7 +82,7 @@ class Register extends Component {
 
   render() {
     const isShow = this.state.isShow;
-    console.log(this.props)
+    // console.log(this.props)
 
     const registerPage = cn({
       'register-page': true,

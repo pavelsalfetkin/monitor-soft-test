@@ -63,7 +63,7 @@ class App extends React.Component {
         totalPages: res.data.total_pages,
         isDataShown: !isDataShown,
       });
-      console.log(res);
+      // console.log(res);
       this.switchStatusText(res.status);
     }, 2000);
   }
