@@ -91,11 +91,21 @@ class Home extends Component {
     const { usersList, isHomePage, deleteUser, updateUser } = this.props;
     const isShow = this.state.isShow;
 
+    // console.log("Home.js - isHomePage:", isHomePage);
+
     const newUserData = {
       avatar: "https://api.adorable.io/avatars/88/abott@adorable.png",
       first_name: "New",
       last_name: "User",
       email: "newuser@create.me",
+      id: "id",
+    };
+
+    const addUserData = {
+      avatar: "https://api.adorable.io/avatars/88/abott@adorable.png",
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      email: this.state.email,
       id: "id",
     };
 
@@ -182,8 +192,8 @@ class Home extends Component {
                 &nbsp;the operation
               </span>
               <ul className={homePageList}>
-                <Item key={newUserData.id}
-                  itemData={newUserData}
+                <Item key={addUserData.id}
+                  itemData={addUserData}
                   isHomePage={isHomePage}
                   deleteUser={deleteUser}
                   updateUser={updateUser}
@@ -201,8 +211,8 @@ class Home extends Component {
                 New user created, cheers!
               </span>
               <ul className={homePageList}>
-                <Item key={newUserData.id}
-                  itemData={newUserData}
+                <Item key={addUserData.id}
+                  itemData={addUserData}
                   isHomePage={isHomePage}
                   deleteUser={deleteUser}
                   updateUser={updateUser}
